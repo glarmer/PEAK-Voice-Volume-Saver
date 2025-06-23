@@ -108,7 +108,14 @@ public class Plugin : BaseUnityPlugin
         {
             //save newvalue to text file
             Logger.LogInfo($"Player saving: {__instance.player.NickName} {newValue}");
-            _voiceVolumes.Add(__instance.player.NickName, newValue);
+            if (_voiceVolumes.ContainsKey(__instance.player.NickName))
+            {
+                _voiceVolumes[__instance.player.NickName] = newValue;
+            }
+            else
+            {
+                _voiceVolumes.Add(__instance.player.NickName, newValue);
+            }
             plugin.SaveDictionaryToConfig();
         }
     }
