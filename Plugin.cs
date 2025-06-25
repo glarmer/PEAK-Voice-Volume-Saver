@@ -89,13 +89,18 @@ public class Plugin : BaseUnityPlugin
         [HarmonyPostfix]
         static void Postfix(AudioLevelSlider __instance)
         {
+            if (__instance.player == null)
+                return;
             Logger.LogInfo($"Player Joined: {__instance.player.NickName}");
-            if (_voiceVolumes.TryGetValue(__instance.player.NickName, out var savedVolume))
+            if (__instance.player != null && !__instance.player.IsLocal)
             {
-                Logger.LogInfo($"Player Volume: {savedVolume}");
-                AudioLevels.SetPlayerLevel(__instance.player.ActorNumber, savedVolume); 
-                __instance.slider.SetValueWithoutNotify(AudioLevels.GetPlayerLevel(__instance.player.ActorNumber));
-                __instance.percent.text = Mathf.RoundToInt(__instance.slider.value * 200f).ToString() + "%";
+                if (_voiceVolumes.TryGetValue(__instance.player.NickName, out var savedVolume))
+                {
+                    Logger.LogInfo($"Player Volume: {savedVolume}");
+                    AudioLevels.SetPlayerLevel(__instance.player.ActorNumber, savedVolume); 
+                    __instance.slider.SetValueWithoutNotify(AudioLevels.GetPlayerLevel(__instance.player.ActorNumber));
+                    __instance.percent.text = Mathf.RoundToInt(__instance.slider.value * 200f).ToString() + "%";
+                }
             }
         }
     }
@@ -106,6 +111,8 @@ public class Plugin : BaseUnityPlugin
         [HarmonyPostfix]
         static void Postfix(float newValue, AudioLevelSlider __instance)
         {
+            if (__instance.player == null)
+                return;
             //save newvalue to text file
             Logger.LogInfo($"Player saving: {__instance.player.NickName} {newValue}");
             if (_voiceVolumes.ContainsKey(__instance.player.NickName))
