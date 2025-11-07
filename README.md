@@ -17,7 +17,7 @@ Did you know I take commissions? Contact me on discord @glarmer if you'd like to
 2.) Extract the contents of that zip into your game directory (default: C:\Program Files (x86)\Steam\steamapps\common\PEAK) resulting in a folder that has the following files: <br>
 ![image](https://github.com/user-attachments/assets/403d9a1d-16a4-409c-a046-bc56141ac0ca) <br>
 3.) Start the game and close it again, this does the first time set up for Bepinex. <br>
-4.) Navigate to ...\PEAK\BepInEx\plugins, copy and paste the VoiceVolumeSaver.dll from [Manual Download ](https://thunderstore.io/c/peak/p/glarmer/PEAK_Voice_Volume_Saver/) into this folder. <br>
+4.) Navigate to ...\PEAK\BepInEx\plugins, copy and paste the voice_volume_saver.dll from [Manual Download ](https://thunderstore.io/c/peak/p/glarmer/PEAK_Voice_Volume_Saver/) into this folder. <br>
 5.) Run the game <br>
 
 ## Important
