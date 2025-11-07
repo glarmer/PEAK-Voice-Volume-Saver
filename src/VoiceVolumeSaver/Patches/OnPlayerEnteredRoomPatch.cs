@@ -12,6 +12,7 @@ public class OnPlayerEnteredRoomPatch
     static void Postfix()
     {
         bool isActive = GUIManager.instance.pauseMenu.activeSelf;
+        GUIManager.instance.pauseMenu.SetActive(false);
         GUIManager.instance.pauseMenu.SetActive(true);
         GUIManager.instance.pauseMenu.SetActive(isActive);
     }
