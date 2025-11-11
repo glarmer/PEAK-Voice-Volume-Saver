@@ -22,8 +22,8 @@ public class AudioLevelSliderPatches
             if (ConfigurationHandler.VoiceVolumes.TryGetValue(__instance.player.NickName, out var savedVolume))
             {
                 Plugin.Logger.LogInfo($"Player Volume: {savedVolume}");
-                AudioLevels.SetPlayerLevel(__instance.player.ActorNumber, savedVolume);
-                __instance.slider.SetValueWithoutNotify(AudioLevels.GetPlayerLevel(__instance.player.ActorNumber));
+                AudioLevels.SetPlayerLevel(__instance.player.UserId, savedVolume);
+                __instance.slider.SetValueWithoutNotify(AudioLevels.GetPlayerLevel(__instance.player.UserId));
                 __instance.percent.text = Mathf.RoundToInt(__instance.slider.value * 200f) + "%";
             }
         }
